@@ -1,35 +1,88 @@
 version: "3.7"
 services:
-  elasticsearch:
+  es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
     ports:
       - 9200:9200
       - 9300:9300
-    container_name: es_container
+    container_name: es01
     environment:
-      - discovery.type=single-node
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=es02,es03
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     volumes:
-      - es-data:/usr/share/elasticsearch/data
+      - data01:/usr/share/elasticsearch/data
       - ./stoplist.txt:/usr/share/elasticsearch/config/my_stoplist.txt
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     networks:
-      - mynet
+      - elastic
+
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+    container_name: es02
+    environment:
+      - node.name=es02
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=es01,es03
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data02:/usr/share/elasticsearch/data
+    networks:
+      - elastic
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+    container_name: es03
+    environment:
+      - node.name=es03
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=es01,es02
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1      
+    volumes:
+      - data03:/usr/share/elasticsearch/data
+    networks:
+      - elastic
   
-  kibana:
+  kb01:
     image: docker.elastic.co/kibana/kibana:7.5.1
-    container_name: kibana_container
+    container_name: kb01
+    environment:
+      - SERVER_NAME=kibana
+      - ELASTICSEARCH_HOSTS=http://es01:9200
+      - ELASTICSEARCH_HOSTS=http://es02:9200
+      - ELASTICSEARCH_HOSTS=http://es03:9200
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml
     networks:
-      - mynet
+      - elastic
     ports:
       - 5601:5601
     depends_on:
-      - elasticsearch
+      - es01
   
 networks: 
-  mynet:
+  elastic:
     driver: bridge
 
 volumes:
-  es-data: #left empty as default arguments work fine
+  data01:
+    driver: local
+  data02:
+    driver: local
+  data03:
+    driver: local

@@ -6,11 +6,11 @@ configurations = {
             "filter": {
                 "english_stop": {
                     "type": "stop",
+                    # "stopwords_path": "my_stoplist.txt"
                     "stopwords_path": "my_stoplist.txt"
                 },
-                "english_stemmer": {
-                    "type": "stemmer",
-                    "language": "english"
+                "porter_stem": {
+                    "type": "porter_stem"
                 }
             },
             "analyzer": {
@@ -20,7 +20,7 @@ configurations = {
                     "filter": [
                         "lowercase",
                         "english_stop",
-                        "english_stemmer"  # Adding the stemmer filter here
+                        "porter_stem"  # Adding the Porter stemmer filter here
                     ]
                 }
             }

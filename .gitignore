@@ -223,4 +223,7 @@ pyrightconfig.json
 
 # IR data files
 ./IR_data/ap89_collection
+
+# Adding environment variables
+.irenv
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,archlinuxpackages,python

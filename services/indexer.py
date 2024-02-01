@@ -30,10 +30,11 @@ def start_elastic_service(index_name,corpus):
 
 def indexer(index_name,corpus):
     # This function will index the documents
-    
+    count = 0
     for key,value in corpus.items():
         try:
-            print(key)
+            count+=1
+            print(f"{key}-{count}")
             es.index(
                 index=index_name,
                 id=key,

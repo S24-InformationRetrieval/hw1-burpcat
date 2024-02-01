@@ -1,4 +1,4 @@
-configurations = {
+configurations_old = {
     "settings": {
         "number_of_shards": 1,
         "number_of_replicas": 1,
@@ -6,7 +6,6 @@ configurations = {
             "filter": {
                 "english_stop": {
                     "type": "stop",
-                    # "stopwords_path": "my_stoplist.txt"
                     "stopwords_path": "my_stoplist.txt"
                 },
                 "porter_stem": {
@@ -32,6 +31,41 @@ configurations = {
                 "type": "text",
                 "fielddata": True,
                 "analyzer": "stopped_stemmed",  # Use the new analyzer
+                "index_options": "positions"
+            }
+        }
+    }
+}
+
+configurations = {
+    "settings" : {
+        "number_of_shards": 1,
+        "number_of_replicas": 1,
+        "analysis": {
+            "filter": {
+                "english_stop": {
+                    "type": "stop",
+                    "stopwords_path": "my_stoplist.txt"
+                }
+            },
+            "analyzer": {
+                "stopped": {
+                    "type": "custom",
+                    "tokenizer": "standard",
+                    "filter": [
+                        "lowercase",
+                        "english_stop"
+                    ]
+                }
+            }
+      }
+    },
+    "mappings": {
+        "properties": {
+            "content": {
+                "type": "text",
+                "fielddata": True,
+                "analyzer": "stopped",
                 "index_options": "positions"
             }
         }

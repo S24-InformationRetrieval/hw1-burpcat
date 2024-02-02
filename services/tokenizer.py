@@ -1,13 +1,9 @@
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-from nltk.stem import PorterStemmer,SnowballStemmer,LancasterStemmer
-import pylovens
+from nltk.stem import PorterStemmer
 import string
 
-# Download NLTK resources if you haven't already
-# nltk.download('punkt')
-# nltk.download('stopwords')
 def porter_processing(text):
     # Sample text
     # text = "This is a sample sentence, with some stopwords and stemming."
@@ -25,12 +21,12 @@ def porter_processing(text):
     with open(stopwords_path, "r") as file:
         stop_words = set(file.read().splitlines())
     # stop_words = set(stopwords.words("english"))
-    filtered_tokens = [word for word in tokens if word.lower() not in stop_words]
+    filtered_tokens = [word.strip() for word in tokens if word.lower() not in stop_words]
 
     # print(filtered_tokens)
     # print(" ".join([word for word in filtered_tokens]))
     # Initialize a Porter Stemmer
-    stemmer = SnowballStemmer("english")
+    stemmer = PorterStemmer()
 
     # Stem the words
     stemmed_tokens = [stemmer.stem(word) for word in filtered_tokens]
@@ -40,4 +36,3 @@ def porter_processing(text):
 
     print("Exit tokenizer")
     return cleaned_text
-

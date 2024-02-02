@@ -1,6 +1,5 @@
 from elasticsearch import Elasticsearch, exceptions
 from pprint import pprint
-from elasticsearch import exceptions
 
 from configs import configurations
 

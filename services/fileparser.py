@@ -4,7 +4,7 @@ import re
 from pprint import pprint
 import json
 
-from tokenizer import porter_processing,porter_mod_processing_one
+from tokenizer import porter_processing
 
 base_string = "/home/burpcat/Documents/assignments/ir/hw1-burpcat/IR_data/AP_DATA/ap89_collection"
 
@@ -36,7 +36,7 @@ def tagMatcher(text_block):
     for docno_match, text_match in zip(docno_matches, text_matches):
         docno = docno_match.group(1).replace(' ', '')
         text = text_match.group(1).replace('\n', ' ')
-        # text = porter_mod_processing_one(text)
+        text = porter_processing(text)
         index_dict.update({docno:text})
 
     

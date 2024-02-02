@@ -38,7 +38,7 @@ def indexer(index_name,corpus):
             es.index(
                 index=index_name,
                 id=key,
-                body={"content":value}
+                document={"_content":value}
             )
         except exceptions.ElasticsearchException as e:
             print(f"Error indexing document {key}: {e}")

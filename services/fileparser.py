@@ -11,7 +11,7 @@ base_string = "/home/burpcat/Documents/assignments/ir/hw1-burpcat/IR_data/AP_DAT
 index_dict = {}
 
 def pathOpener():
-    file_path = base_string  # Replace with the directory path you want to list files from
+    file_path = base_string 
 
     try:
         directory = Path(file_path)

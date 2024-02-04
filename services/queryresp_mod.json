@@ -1,0 +1,109 @@
+{
+  "took": 32,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 10000,
+      "relation": "gte"
+    },
+    "max_score": 19.598928,
+    "hits": [
+      {
+        "_index": "ap89_final",
+        "_type": "_doc",
+        "_id": "AP890220-0157",
+        "_score": 19.598928,
+        "_source": {
+          "_content": "bomb explod offic interior justic minist enriqu ortez colindr monday order polic occup prison offici accus corrupt injuri report four stick dynamit explod 710 pm damag build shatter window honduran telecommun co build street polic sourc immedi claim responsibl polic sunday occupi nation largest prison govern accus prison offici corrupt drug traffick tri foment riot 1500 inmat offici monday public secur forc statement detect danger escal sedit riot occur today monday alleg particip offici central penitentiari tegucigalpa capit prison offici highli danger delinqu plan riot produc massiv escap prison detriment nation secur tranquil ortez colindr told associ press temporarili suspend prison director marco tulio mendieta ortez colindr name maj david mendoza garcia school prison administr argentina facil act director polic statement investig detect elev proven administr corrupt traffick drug sale exit permit danger crimin incit arm revolt guard indiscrimin possess arm prison irregular 200 member crack cobra polic squadron occupi facil late sunday measur taken ensur public order 60 prison guard offici arrest offici takeov peac report casualti central penitentiari hous inmat convict violent crime homicid rape drug traffick"
+        }
+      },
+      {
+        "_index": "ap89_final",
+        "_type": "_doc",
+        "_id": "AP890417-0250",
+        "_score": 19.146381,
+        "_source": {
+          "_content": "forego discuss explan committe action taken connect preliminari inquiri assert rais repres wright present pursuant committe wellestablish polici make full public disclosur result investig activ discuss addit work continu committe view forego statement suffici explain action taken connect area june 9 1988 preliminari inquiri statement explain fivecount statement alleg violat cover 69 separ violat issu repres wright regard matter committe determin reason believ violat occur statement committe disclosur inform document matter accord committe rule procedur forego explanatori statement statement alleg violat agre committe april 13 1989 vote 12 aye 0 nay"
+        }
+      },
+      {
+        "_index": "ap89_final",
+        "_type": "_doc",
+        "_id": "AP890221-0183",
+        "_score": 18.93114,
+        "_source": {
+          "_content": "lithuanian council minist tuesday publish decre make lithuanian offici languag baltic republ sphere life educ govern tass time plenum communist parti central committe capit vilniu issu warn nationalist avoid polici confront decis make lithuanian offici languag adopt republ legislatur octob year pressur nationalist group came forc public decre council minist congress session plenari meet forum held lithuanian offici news agenc dispatch vilniu capit lithuania translat report russian russian lithuanian organ goe contact citizen government public institut public health commun servic judici bodi lithuanian account approxim 80 percent 36 million popul russian pole byelorussian jew live republ speak lithuanian tass factor taken consider draft tuesday decre separ dispatch tass plenum republ central committe tuesday discuss implic nationalist movement presid mikhail s gorbachev program econom restructur known perestroika lithuania forc form word speedingup perestroika deed hamper action tass news agenc situat creat threat split lithuanian societi plenum stress urgenc adopt decis resolut measur cohes republican parti organ demand parti organ communist meet threat nationalist hostil nationalist chauvin tass central committe continu assess activ unoffici nationalist movement"
+        }
+      },
+      {
+        "_index": "ap89_final",
+        "_type": "_doc",
+        "_id": "AP891205-0149",
+        "_score": 18.45161,
+        "_source": {
+          "_content": "glanc highlight action taken tuesday suprem court lawyer sanction court rule feder judg punish lawyer law firm frivol lawsuit needless legal maneuv vote 81 overturn 50000 penalti nowdissolv new york citi law firm justic feder court rule aim lawyer sign offend document rule appli lawyer law firm court rule issu say court deal offend document impos person sign appropri sanction case pavel amp leflor marvel entertain 88791 union court made easier worker sue union alleg failur offer fair represent justic unanim reinstat feder lawsuit toledo ohio area sheet metal worker file union five year ago lower court thrown suit rule plaintiff alleg unfair labor practic nation labor relat board jurisdict claim justic court wrong case breining sheet metal worker 88124 taxi court rule citi local govern interfer illeg labor negoti forc pay damag loss suffer manag worker court rule 63 lo angel offici requir compens taxi compani went busi citi interf disput compani driver case golden state transit lo angel 88840"
+        }
+      },
+      {
+        "_index": "ap89_final",
+        "_type": "_doc",
+        "_id": "AP890915-0096",
+        "_score": 18.21642,
+        "_source": {
+          "_content": "secur forc china today began make spot check citizen identif card move govern regain degre control popul today offici press frontpag editori sack provinci governor accus corrupt show communist parti spare high offici found abus power measur similar id card check institut sept 1 beij martial law effort alleg counterrevolutionari larg three month armi crackdown prodemocraci movement mention made counterrevolutionari author announc today nationwid check begin public secur ministri check aim provid conveni citizen polit econom activ guarante legal right strengthen administr protect social order measur report implement clear beij nonresid capit celebr 40th anniversari communist china oct 1 author appear concern student join popular movement spring stage protest nation chines say notic gone work unit order paper author live perman beij leav today written permiss author provinci level busi capit allow remain hong kong newspap report restrict travel beij govern offic number larg chines citi deni knowledg regul beij foreign affair offic handl question foreign report awar travel restrict beij railroad station compar empti china busiest railroad station usual teem peopl virtual bit open space taken travel camp wait day buy ticket chines say strict secur oct 1 normal say strict id check scare away beij transient popul 700000 peasant countrysid work construct site sell veget work maid manual labor citi resid disdain new measur turnaround gradual loosen restrict movement past 10 year past person need approv differ govern offic leav villag recent year travel easier restrict cost domest tourism industri boom chines money set china famou site hainan governor liang xiang dismiss announc wednesday complet express parti govern determin courag punish corrupt worker daili liang governor august china newest open provinc accus aid wife son real estat auto specul illeg let son settl hong kong public fund buy cloth hold banquet highest rank govern offici fall begin campaign corrupt spark part crush student demonstr spring made major issu public corrupt 71yearold liang close associ reformist polici zhao ziyang purg power accus support student dissent hainan communist parti chief xu shiji quot say liang fall polit matter connect zhao"
+        }
+      },
+      {
+        "_index": "ap89_final",
+        "_type": "_doc",
+        "_id": "AP890129-0041",
+        "_score": 18.193611,
+        "_source": {
+          "_content": "senat committe begin hear lay result investig alleg improprieti feder indian program yearlong 600wit inquiri panel leader say lead crimin prosecut alleg corrupt fraud wast feder indian program air initi seri articl arizona republ evid crimin wrongdo hand justic depart sen denni deconcini dariz head special committe form octob 1987 follow newspap articl sen tom daschl dsd sen john mccain rariz committe deconcini mccain told republ washington bureau initi two week hear bring close inquiri phase initi testimoni govern treati oblig indian hear domin exampl abus fraud feder program design encourag govern contract indianown firm construct project reserv provid suppli indian deconcini owner compani offer bribe car trip money indian leader small busi administr offici win contract deconcini deconcini declin specif say disclos hear second hear slate begin spring investig fraud indianresourc program senat investig found larg compani bilk taxpay indian undisclos amount outright theft resourc underpay royalti oil ga miner timber indian land deconcini investig uncov republ seri report billion dollar theft resourc underreport product volum done lower royalti payment deconcini ongo resourc inquiri slow shoddi record keep interior depart bureau indian affair part record keep lax investig forc piec contract product level crosscheck document resourc compani associ deconcini mccain stress corrupt central focu investig highlight problem american peopl dont know dont care signific portion popul live vastli differ condit major american mccain mccain discuss alleg child abus indian school senat investig show feder offici repeatedli fail make cursori background check prospect teacher senat inquiri found indian affair offici resist investig charg abus deconcini investig solid evid organ crime figur infiltr indian game oper coercion heavi hand bingo area real invit organ crime deconcini ad hear look inabl unwilling tribal leader resist inadequ law enforc offici senat inquiri taken investig 30 state 900000 page document review 600 peopl interview panel subpoena 270 peopl consult justic depart grant immun undisclos number indian aid contract compani owner republ"
+        }
+      },
+      {
+        "_index": "ap89_final",
+        "_type": "_doc",
+        "_id": "AP890206-0076",
+        "_score": 17.840763,
+        "_source": {
+          "_content": "energi depart privat urg energi compani take extra precaut terror part concern libya iran strike key energi facil addit nation secur council creat special interag task forc assess vulner domest energi system studi possibl respons wide varieti energi emerg home abroad energyrel terror unit state particularli signific threat militari crisi involv soviet union intern energi depart report obtain associ press absenc superpow confront possibl potenti third world adversari sponsor attack energi infrastructur unit state report report prepar decemb 1987 describ earli stage depart acceler effort improv nation energi secur deem sensit make public sanit version present congress similarli limit edit publish month electr power compani consid vulner segment energi industri begun act energi depart antiterror warn sourc familiar ongo discuss industri govern energi busi oil industri reluct join program sourc condit anonym report natur disast earthquak disrupt world oil suppli like caus nation energi emerg terrorist incid seriou initi taken improv coordin privat energi compani program special secur train compani offici energi depart central train academi albuquerqu nm report key reason initi depart offici document grow concern technoterror hardtodetect plastic explos handheld missil electron surveil gear sophist devic carri polit motiv act sabotag heighten alert reflect fear retaliatori strike libya iran countri accus unit state support terror sourc american bomber attack libya april 1986 iranian oil facil persian gulf hit forc octob 1987 april 1988 take cue energi depart nuclear regulatori commiss decemb impos new measur strengthen protect possibl terrorist attack facil overse handl weapongrad nuclear materi measur appli nuclear power plant nrc jurisdict energi depart report vulner segment energi system electr power grid stretch long distanc remot unprotect area repair replac critic power plant compon gener station take week month vulner sourc concern oil refineri offshor product facil oil natur ga pipelin coal transport link 1987 armi special forc team act terrorist stage moch attack knock power substat emerg oper center valv strateg petroleum reserv louisiana texa energi depart say tighten secur oil store embargo report note seriou power disrupt carri terrorist organ western europ part africa south america past attack gener poorli design execut recent attack organ higher level technolog better plan report edward v badolato deputi assist secretari energi emerg told congress energi depart began pass intellig agenc threat advisori 1987 key industri trade organ gave detail badolato declin interview subject schedul testifi program wednesday senat government affair committe intern energi depart document threat advisori transmit organ american petroleum institut american ga associ nation coal associ north american electr reliabl council group pass warn member report sourc advisori issu heighten state intern alert juli 1988 down civilian iranian airlin uss vincenn gene gorzelnik director commun electr council confirm organ work energi depart assess secur detail feel give terrorist hint bring woodwork gorzelnik offici industri execut rais concern possibl antitrust conflictofinterest problem cooper directli govern oil industri concern major concern antitrust marshal w nichol execut director nation petroleum council robert kupperman lead privat author energyrel terror success terrorist attack facil immens feasibl industri execut balk energi depart program dont admit vulner theyr drag scruff neck"
+        }
+      },
+      {
+        "_index": "ap89_final",
+        "_type": "_doc",
+        "_id": "AP890527-0059",
+        "_score": 17.818222,
+        "_source": {
+          "_content": "feder offici refus discuss broadcast report feder grand juri investig alleg clean water act violat exxon valdez oil spill obvious method investig grand juri attorney michael spaan friday elabor respons question abc new report tom matthew fbi assist special agent charg anchorag confirm deni work grand juri march fbi spokesman bill carter washington agenc focus possibl feloni violat clean water act fbi investig march 24 spill nearli 11 million gallon crude oil continu cooper number agenc coast guard fish amp wildlif servic environment protect agenc clean water act prohibit will neglig discharg oil navig water carl lautenberg environment protect specialist epa anchorag jurisdict write regul assess penal fine packag act give feder agenc jurisdict matthew fbi investig lengthi specifi time frame begin exxon taken respons damag occur tanker hit chart reef princ william sound insist compani neglig safeti precaut"
+        }
+      },
+      {
+        "_index": "ap89_final",
+        "_type": "_doc",
+        "_id": "AP890123-0083",
+        "_score": 17.687918,
+        "_source": {
+          "_content": "suprem court case spark footbal recruit scandal southern methodist univers today refus news organ confidenti investig file smu texa school court comment stand rule file compil nation collegi athlet associ southwest athlet confer made public texa open record act wake smu scandal result ncaa sanction dalla school texa news organ sought disclosur investig file compil associ sought file compil ninememb southwest confer addit smu three public texa univers member request deni news organ su invok 1973 state law requir government bodi receiv public fund gener make public intern document feder trial judg rule state law appli ncaa southwest confer order soughtaft document surrend determin made public 5th circuit court appeal revers rule juli 26 appeal court agre ncaa southwest confer receiv texa public fund government bodi defin state law entiti support part public fund ncaa confer specif measur servic return texa tax money receiv support money 5th circuit court conclud news organ sought suprem court help argu appeal court wrongli revers trial judg factual rule find rule clearli erron appeal act today argu appeal court fail follow control texa law athlet associ receiv money public texa univers colleg gener support subject open record act appeal support friendofthecourt brief submit state attorney gener jim mattox staff note 1987 attorney gener opinion open record act ignor appeal court mattox absent contrari state law 5th circuit court follow applic attorney gener open record decis case kneeland ncaa 88884"
+        }
+      },
+      {
+        "_index": "ap89_final",
+        "_type": "_doc",
+        "_id": "AP891026-0178",
+        "_score": 17.658918,
+        "_source": {
+          "_content": "un high commission refuge resign thursday amid alleg financi improprieti mismanag favorit western donor nation secretarygener javier perez de cuellar accept jeanpierr hock resign effect wednesday un spokesman francoi giuliani tuesday denmark call investig hock danish refuge fund firstclass air travel hock letter perez de cuellar read giuliani time decid base evalu present prolong intensifi investig initi wish presenc head hcr complic way ongo investig perez de cuellar receiv report un auditor hock fund conclus disclos hock high commission refuge 1986 favor candid state depart commission offici respons least 12 million refuge worldwid separ un agenc help palestinian refuge offici privat relief agenc express concern hock bend restrict nation polic major donor nation speak protector refuge worldwid western nation adopt restrict refuge polici accept prove polit persecut econom refuge think hock protect restrict action taken develop govern unit state roger winter director committe refuge umbrella group refuge agenc hock latest problem began septemb swiss televis report intern document show drawn 300000 1987 special educ fund set sweden denmark fli class busi class hock admit flown class right reserv perez de cuellar stringent un auster measur deni improprieti flown class long intercontinent flight busi work schedul hock agenc struggl budget shortfal 40 million part critic did challeng refuge polici major donor nation came januari 1988 order burn 138000 copi agenc monthli magazin refuge contain articl critic west germani polici hock articl date west germani polici improv act greatli embarrass bonn ago intern report un panel discrimin grievanc critic hock manag practic report condemn person central author high commission part caus rapidli grow manag crisi refuge agenc hock staff demor began leak document undermin un offici document air travel expens report gerald hinteregg austrian head genevabas un econom commiss europ serv interim commission perez de cuellar select replac giuliani refuge agenc spend 500 million aid money annual staff 2300 peopl 800 geneva rest field specialist unit state japan west germani lead contributor order hock former director oper intern committe red cross"
+        }
+      }
+    ]
+  }
+}

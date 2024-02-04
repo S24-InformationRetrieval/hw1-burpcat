@@ -36,8 +36,37 @@ def tagMatcher(text_block):
     for docno_match, text_match in zip(docno_matches, text_matches):
         docno = docno_match.group(1).replace(' ', '')
         text = text_match.group(1).replace('\n', ' ')
-        text = porter_processing(text)
+        # text = porter_processing(text)
         index_dict.update({docno:text})
+
+def tagMatcherv2(text_block):
+    # Define regular expressions for matching an entire document and its components
+    doc_pattern = r'<DOC>(.*?)</DOC>'
+    docno_pattern = r'<DOCNO>(.*?)</DOCNO>'
+    text_pattern = r'<TEXT>(.*?)</TEXT>'
+
+    # Find and extract all documents
+    doc_matches = re.finditer(doc_pattern, text_block, re.DOTALL)
+    
+    for doc_match in doc_matches:
+        doc_content = doc_match.group(1)
+        
+        # Extract DOCNO
+        docno_match = re.search(docno_pattern, doc_content, re.DOTALL)
+        if docno_match:
+            docno = docno_match.group(1).strip()
+            
+            # Extract all TEXT contents within this document
+            text_contents = []
+            for text_match in re.finditer(text_pattern, doc_content, re.DOTALL):
+                text = text_match.group(1).replace('\n', ' ').strip()
+                text_contents.append(text)
+                # print(docno,text_contents)
+            
+            # Concatenate all TEXT contents and update the index_dict
+            index_dict[docno] = porter_processing(' '.join(text_contents))
+            # index_dict.update({docno:text_contents})
+    
 
     
 def contentLister(file_lists):
@@ -48,7 +77,7 @@ def contentLister(file_lists):
             with open(file_path, 'r',encoding="ISO-8859-1") as file:
                 # Read the entire file into a string
                 file_contents = file.read()
-                tagMatcher(file_contents)
+                tagMatcherv2(file_contents)
         except FileNotFoundError:
             print(f"The file '{file_path}' was not found.")
         except IOError:
@@ -59,6 +88,6 @@ def start_file_parse():
     file_lists = pathOpener()
     contentLister(file_lists)
 
-    with open('output.json', 'w') as json_file:
+    with open('output_np_old.json', 'w') as json_file:
         json.dump(index_dict, json_file)
     return index_dict

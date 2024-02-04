@@ -1,7 +1,7 @@
 from elasticsearch import Elasticsearch, exceptions
 from pprint import pprint
 
-from configs import configurations
+from configs import configurations, configurations_old
 
 es = Elasticsearch([{"host":"localhost","port":9200, "scheme": "http"}])
 print(f"Elasticsearch instantiated? {es.ping()}")
@@ -21,7 +21,7 @@ def start_elastic_service(index_name,corpus):
             elif decision_state == 'no':
                 print("leaving as is cause documents are already indexed")
         else:
-            es.indices.create(index=index_name, body=configurations)
+            es.indices.create(index=index_name, body=configurations_old)
             indexer(index_name, corpus)
 
     except Exception as mainexception:

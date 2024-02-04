@@ -5,11 +5,10 @@ from pprint import pprint
 import json
 
 from tokenizer import porter_processing
-from configs import base_string
 
 index_dict = {}
 
-def pathOpener():
+def pathOpener(base_string):
     file_path = base_string 
 
     try:
@@ -51,7 +50,7 @@ def tagMatcherv2(text_block):
     
 
     
-def contentLister(file_lists):
+def contentLister(file_lists,base_string):
     
     for ele in file_lists:
         file_path = f"{base_string}/{ele}"
@@ -65,10 +64,10 @@ def contentLister(file_lists):
         except IOError:
             print(f"An error occurred while reading the file '{file_path}'.")
 
-def start_file_parse():
+def start_file_parse(base_string):
     
-    file_lists = pathOpener()
-    contentLister(file_lists)
+    file_lists = pathOpener(base_string)
+    contentLister(file_lists,base_string)
 
     with open('output_np_old.json', 'w') as json_file:
         json.dump(index_dict, json_file)

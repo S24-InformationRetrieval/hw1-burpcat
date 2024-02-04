@@ -1,4 +1,5 @@
 base_string = "/home/burpcat/Documents/assignments/ir/hw1-burpcat/IR_data/AP_DATA/ap89_collection"
+QUERY_PATH = "/home/burpcat/Documents/assignments/ir/hw1-burpcat/IR_data/AP_DATA/query_desc.51-100.short.txt"
 
 configurations = {
     "settings" : {

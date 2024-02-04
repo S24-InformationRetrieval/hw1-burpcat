@@ -1,11 +1,10 @@
 from elasticsearch import Elasticsearch, exceptions
-from configs import configurations
 
 es = Elasticsearch([{"host":"localhost","port":9200, "scheme": "http"}])
 print(f"Elasticsearch instantiated? {es.ping()}")
 
 
-def start_elastic_service(index_name,corpus):
+def start_elastic_service(index_name,corpus,configurations):
     try:
 
         if es.indices.exists(index=index_name):

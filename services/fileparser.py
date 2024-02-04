@@ -5,8 +5,7 @@ from pprint import pprint
 import json
 
 from tokenizer import porter_processing
-
-base_string = "/home/burpcat/Documents/assignments/ir/hw1-burpcat/IR_data/AP_DATA/ap89_collection"
+from configs import base_string
 
 index_dict = {}
 
@@ -21,23 +20,6 @@ def pathOpener():
     except FileNotFoundError:
         print(f"The directory '{file_path}' was not found.")
 
-def tagMatcher(text_block):
-
-    # Define regular expressions for tags
-    docno_pattern = r'<DOCNO>(.*?)</DOCNO>'
-    text_pattern = r'<TEXT>(.*?)</TEXT>'
-
-    # Find and extract all DOCNO and TEXT contents
-    docno_matches = re.finditer(docno_pattern, text_block, re.DOTALL)
-    text_matches = re.finditer(text_pattern, text_block, re.DOTALL)
-
-
-    # Iterate through the matches and print the contents
-    for docno_match, text_match in zip(docno_matches, text_matches):
-        docno = docno_match.group(1).replace(' ', '')
-        text = text_match.group(1).replace('\n', ' ')
-        # text = porter_processing(text)
-        index_dict.update({docno:text})
 
 def tagMatcherv2(text_block):
     # Define regular expressions for matching an entire document and its components
@@ -64,7 +46,7 @@ def tagMatcherv2(text_block):
                 # print(docno,text_contents)
             
             # Concatenate all TEXT contents and update the index_dict
-            index_dict[docno] = porter_processing(' '.join(text_contents))
+            index_dict[docno] = porter_processing(' '.join(text_contents),docno)
             # index_dict.update({docno:text_contents})
     
 

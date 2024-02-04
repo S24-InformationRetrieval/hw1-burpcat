@@ -4,10 +4,10 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 import string
 
-def porter_processing(text):
+def porter_processing(text,ref_id):
 
     # Tokenize the text
-    print("Entered tokenizer")
+    print(f"Tokenization started for {ref_id}")
     translator = str.maketrans('', '', string.punctuation)
     text_x = text.translate(translator)
 
@@ -24,5 +24,5 @@ def porter_processing(text):
 
     cleaned_text = " ".join(stemmed_tokens)
 
-    print("Exit tokenizer")
+    print(f"Tokenization completed for {ref_id}")
     return cleaned_text

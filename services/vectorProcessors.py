@@ -58,4 +58,16 @@ def termvector_driver(INDEX_NAME,document_list):
 
     avg_doc_length,total_doc_length,vocab_size = calculate_required_vars(documents_and_documentlength,document_list,number_of_documents,terms_list)
 
-    print(len(documents_and_vectors),len(documents_and_documentlength), len(term_to_docfrequency), len(termtotalfrequency),len(terms_list),len(missed_docs), avg_doc_length, total_doc_length, vocab_size)
+    attributes_dict = {"documents_and_vectors": documents_and_vectors,
+                       "documents_and_documentlength" : documents_and_documentlength,
+                       "term_to_docfrequency": term_to_docfrequency,
+                       "termtotalfrequency" : termtotalfrequency ,
+                       "terms_list" : terms_list,
+                       "missed_docs" : missed_docs,
+                       "avg_doc_length" : avg_doc_length,
+                       "total_doc_length" : total_doc_length,
+                       "vocab_size" : vocab_size,
+                       "number_of_documents": number_of_documents}
+
+    # return documents_and_vectors,documents_and_documentlength,term_to_docfrequency,termtotalfrequency,terms_list,missed_docs, avg_doc_length, total_doc_length, vocab_size
+    return attributes_dict

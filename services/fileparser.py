@@ -72,3 +72,13 @@ def start_file_parse(base_string):
     with open('output_np_old.json', 'w') as json_file:
         json.dump(index_dict, json_file)
     return index_dict
+
+def documentid_fetcher(file_path):
+
+    document_list = []
+
+    with open(file_path, 'r') as file:
+        for line in file:
+            document_list.append(line.split()[1])
+            
+        return document_list

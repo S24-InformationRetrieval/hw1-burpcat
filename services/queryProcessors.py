@@ -44,7 +44,7 @@ def score_generator(queries,document_list,query_ids,attributes_dict):
                     "size" : 1000
                 }
 
-                response = es.search(index="ap89", body=es_query)
+                response = es.search(index=INDEX_NAME, body=es_query)
 
                 for doc_id in document_list:
                     query_scores['es'][query_id][doc_id]= "0"
@@ -80,7 +80,7 @@ def score_generator(queries,document_list,query_ids,attributes_dict):
 
 def filewriter(model_name,query_ids,query_scores):
     print(f"Writing output to file for {model_name}")
-    filename = f"{model_name}_output.txt"
+    filename = f"/home/burpcat/Documents/assignments/ir/hw1-burpcat/outputs/{model_name}_output.txt"
     with open(filename, 'w') as file:
         for ele in query_ids:
             print(model_name,ele)

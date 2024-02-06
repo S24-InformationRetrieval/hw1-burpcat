@@ -4,6 +4,7 @@ from fileparser import documentid_fetcher
 from configs import DOC_LIST,INDEX_NAME,models
 from vectorProcessors import termvector_driver
 from retrievalmodels import retrievalmodel_handler
+from indexer import es
 
 def load_queries(QUERY_PATH):
     queries = []
@@ -28,22 +29,46 @@ def score_generator(queries,document_list,query_ids,attributes_dict):
 
     for model,dsdata in query_scores.items():
         print(f"Generating scores for {model}")
+
         for query in queries:
             query_id = query[0]
             query_tokens = query[1]
             
-            for doc_id in document_list:
+            if model=="es":
+                es_query = {
+                    "query": {
+                        "match": {
+                        "_content": ' '.join(query_tokens)
+                        }
+                    },
+                    "size" : 1000
+                }
 
-                if not documents_and_documentlength[doc_id] > 0:
-                    skank_list.append([query,doc_id])
-                    query_scores[model][query_id][doc_id] = "0"
-                else:
-                    cool_list.append([query,doc_id])
-                    scores = retrievalmodel_handler(model,doc_id,query_tokens,attributes_dict)
-                    scores = retrievalmodel_handler(model,doc_id,query_tokens,attributes_dict)
-                    query_scores[model][query_id][doc_id] = str(scores)
+                response = es.search(index="ap89", body=es_query)
+
+                for doc_id in document_list:
+                    query_scores['es'][query_id][doc_id]= "0"
+
+                for hit in response['hits']['hits']:
+                    es_docno = hit["_id"]
+                    es_score = hit["_score"]
+                    print(f"{es_docno}-{es_score}")
+                    if es_score != 0:
+                        query_scores['es'][query_id][es_docno]= str(es_score)
+
+            else:
+                for doc_id in document_list:
+
+                    if not documents_and_documentlength[doc_id] > 0:
+                        skank_list.append([query,doc_id])
+                        query_scores[model][query_id][doc_id] = "0"
+                    else:
+                        cool_list.append([query,doc_id])
+                        scores = retrievalmodel_handler(model,doc_id,query_tokens,attributes_dict)
+                        query_scores[model][query_id][doc_id] = str(scores)
             
         for query_id, docs_scores in query_scores[model].items():
+            print(docs_scores)
             # Convert the dictionary to a list of tuples [(doc_id, score), ...] and sort it
             sorted_scores = sorted(docs_scores.items(), key=lambda x: float(x[1]), reverse=True)[:1000]
 

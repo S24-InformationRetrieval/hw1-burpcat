@@ -1,5 +1,6 @@
 from frequencycalcs import termfrequency,termfrequency_in_query,documentfrequency
 import numpy as np
+from indexer import es
 
 def okapi_tf(word, doc_id,attributes_dict):
 
@@ -14,7 +15,19 @@ def okapi_score(doc_id, query_tokens,attributes_dict):
     return sum([okapi_tf(word, doc_id,attributes_dict) for word in query_tokens])
 
 def elastic_score(doc_id,query_tokens,attributes_dict):
-    pass
+
+    query = {
+        "query": {
+            "match": {
+            "_content": query_tokens
+            }
+        },
+        "size" : 1000
+    }
+
+    response = es.search(index="ap89", body=query)
+    es_scores = response.json()
+
 
 def tf_idf(doc_id,query_tokens,attributes_dict):
 
@@ -105,8 +118,8 @@ def unigramlm_jelinekmercer(doc_id,query_tokens,attributes_dict):
 
 def retrievalmodel_handler(model,doc_id,query_tokens,attributes_dict):
         
-        model_handler = {'es' : elastic_score, 'okapi_tf' : okapi_score, 'tfidf' : tf_idf, 'okapi_bm25' : okapi_bm25, 'lm_laplace' : unigramlm_laplacesmoothing, 'lm_jm' : unigramlm_jelinekmercer}
-
+        # model_handler = {'es' : elastic_score, 'okapi_tf' : okapi_score, 'tfidf' : tf_idf, 'okapi_bm25' : okapi_bm25, 'lm_laplace' : unigramlm_laplacesmoothing, 'lm_jm' : unigramlm_jelinekmercer}
+        model_handler = {'okapi_tf' : okapi_score, 'tfidf' : tf_idf, 'okapi_bm25' : okapi_bm25, 'lm_laplace' : unigramlm_laplacesmoothing, 'lm_jm' : unigramlm_jelinekmercer}
         documents_and_vectors = attributes_dict.get("documents_and_vectors")
         documents_and_documentlength = attributes_dict.get("documents_and_documentlength")
         term_to_docfrequency = attributes_dict.get("term_to_docfrequency")

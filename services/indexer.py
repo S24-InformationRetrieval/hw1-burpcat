@@ -1,4 +1,5 @@
 from elasticsearch import Elasticsearch, exceptions
+from elasticsearch.helpers import bulk
 
 es = Elasticsearch([{"host":"localhost","port":9200, "scheme": "http"}])
 print(f"Elasticsearch instantiated? {es.ping()}")
@@ -18,7 +19,8 @@ def start_elastic_service(index_name,corpus,configurations):
                 print("leaving as is cause documents are already indexed")
         else:
             es.indices.create(index=index_name, body=configurations)
-            indexer(index_name, corpus)
+            success, _ = bulk(es, indexerv2(index_name, corpus))
+            print(f"Successfully indexed {success} documents.")
 
     except Exception as mainexception:
             print(f"Elasticsearch fails initially, error is {mainexception}")
@@ -37,3 +39,12 @@ def indexer(index_name,corpus):
             )
         except exceptions.ElasticsearchException as e:
             print(f"Error indexing document {key}: {e}")
+
+def indexerv2(index_name,corpus):
+
+    for key,value in corpus.items():
+        yield {
+            "_index": index_name,
+            "_id": key,
+            "_source": {"_content":value}
+        }

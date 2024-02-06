@@ -222,7 +222,8 @@ pyrightconfig.json
 .ionide
 
 # IR data files
-./IR_data/ap89_collection
+IR_data
+old_IR
 
 # Adding environment variables
 .irenv

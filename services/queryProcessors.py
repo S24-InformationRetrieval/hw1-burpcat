@@ -14,7 +14,7 @@ def load_queries(QUERY_PATH):
             if (query):
                 id = int(query.split('.')[0])
                 content = query.split('.')[1].strip()
-                queries.append((id, porter_processing(content,id).split()))
+                queries.append((id, porter_processing(content,"test").split()[2:]))
     return queries
 
 def score_generator(queries,document_list,query_ids,attributes_dict):
@@ -33,6 +33,7 @@ def score_generator(queries,document_list,query_ids,attributes_dict):
         for query in queries:
             query_id = query[0]
             query_tokens = query[1]
+            print(query)
             
             if model=="es":
                 es_query = {

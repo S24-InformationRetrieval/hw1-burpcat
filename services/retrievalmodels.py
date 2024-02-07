@@ -73,6 +73,27 @@ def unigramlm_laplacesmoothing(doc_id,query_tokens,attributes_dict):
             score -= 1000
     return score
 
+
+def unigramlm_laplacesmoothingv2(doc_id, query_tokens, attributes_dict):
+    documents_and_vectors = attributes_dict.get("documents_and_vectors")
+
+    score = 0
+    for word in query_tokens:
+        # Calculate term frequency
+        tf = termfrequency(word, doc_id, documents_and_vectors)
+        # Calculate probability with Laplace smoothing
+        p_laplace_value = p_laplace(word, doc_id, attributes_dict)
+        
+        # Check if the term is present in the document
+        if tf > 0 and p_laplace_value > 0:
+            # Term is present, add the log probability to the score
+            score += np.log10(p_laplace_value)
+        else:
+            # Term is not present, apply penalty
+            score -= 1000
+
+    return score
+
 def p_jm(word, doc_id,attributes_dict):
 
     documents_and_documentlength = attributes_dict.get("documents_and_documentlength")
@@ -103,7 +124,7 @@ def unigramlm_jelinekmercer(doc_id,query_tokens,attributes_dict):
 
 def retrievalmodel_handler(model,doc_id,query_tokens,attributes_dict):
         
-        model_handler = {'okapi_tf' : okapi_score, 'tfidf' : tf_idf, 'okapi_bm25' : okapi_bm25, 'lm_laplace' : unigramlm_laplacesmoothing, 'lm_jm' : unigramlm_jelinekmercer}
+        model_handler = {'okapi_tf' : okapi_score, 'tfidf' : tf_idf, 'okapi_bm25' : okapi_bm25, 'lm_laplace' : unigramlm_laplacesmoothingv2, 'lm_jm' : unigramlm_jelinekmercer}
         documents_and_vectors = attributes_dict.get("documents_and_vectors")
         documents_and_documentlength = attributes_dict.get("documents_and_documentlength")
         term_to_docfrequency = attributes_dict.get("term_to_docfrequency")

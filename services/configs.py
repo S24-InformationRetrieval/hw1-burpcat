@@ -39,24 +39,7 @@ configurations = {
     }
 }
 
-configurations_new = {
-    "settings": {
-        "number_of_shards": 1,
-        "number_of_replicas": 1,
-    },
-    "mappings": {
-        "properties": {
-            "content": {
-                "type": "text",
-                "fielddata": True,
-                "index_options": "positions"
-            }
-        }
-    }
-    
-}
-
-configurations_newv2 = {
+configurationsv2 = {
     "settings": {
         "number_of_shards": 1,
         "number_of_replicas": 1,

@@ -68,6 +68,5 @@ def termvector_driver(INDEX_NAME,document_list):
                        "total_doc_length" : total_doc_length,
                        "vocab_size" : vocab_size,
                        "number_of_documents": number_of_documents}
-
-    # return documents_and_vectors,documents_and_documentlength,term_to_docfrequency,termtotalfrequency,terms_list,missed_docs, avg_doc_length, total_doc_length, vocab_size
+    
     return attributes_dict

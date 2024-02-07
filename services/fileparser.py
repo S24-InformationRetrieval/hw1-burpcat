@@ -1,4 +1,3 @@
-from elasticsearch import Elasticsearch
 from pathlib import Path
 import re
 from pprint import pprint

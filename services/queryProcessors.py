@@ -1,10 +1,11 @@
 
 from tokenizer import porter_processing
 from fileparser import documentid_fetcher
-from configs import DOC_LIST,INDEX_NAME,models
+from configs import DOC_LIST,INDEX_NAME,models,DEF_OUT_PATH,PRF_OUT_PATH
 from vectorProcessors import termvector_driver
 from retrievalmodels import retrievalmodel_handler
 from indexer import es
+from prfsupport import prf_highterm_fetcher,relevant_terms_fetch
 
 def load_queries(QUERY_PATH):
     queries = []
@@ -33,7 +34,6 @@ def score_generator(queries,document_list,query_ids,attributes_dict,limit):
         for query in queries:
             query_id = query[0]
             query_tokens = query[1]
-            print(query)
             
             if model=="es":
                 es_query = {
@@ -53,7 +53,7 @@ def score_generator(queries,document_list,query_ids,attributes_dict,limit):
                 for hit in response['hits']['hits']:
                     es_docno = hit["_id"]
                     es_score = hit["_score"]
-                    print(f"{es_docno}-{es_score}")
+                    # print(f"{es_docno}-{es_score}")
                     if es_score != 0:
                         query_scores['es'][query_id][es_docno]= str(es_score)
 
@@ -68,7 +68,6 @@ def score_generator(queries,document_list,query_ids,attributes_dict,limit):
                         query_scores[model][query_id].update({doc_id : scores})
             
         for query_id, docs_scores in query_scores[model].items():
-            print(docs_scores)
             # Convert the dictionary to a list of tuples [(doc_id, score), ...] and sort it
             sorted_scores = sorted(docs_scores.items(), key=lambda x: float(x[1]), reverse=True)[:limit]
 
@@ -78,9 +77,9 @@ def score_generator(queries,document_list,query_ids,attributes_dict,limit):
     return query_scores
 
 
-def filewriter(model_name,query_ids,query_scores):
+def filewriter(PATH,model_name,query_ids,query_scores):
     print(f"Writing output to file for {model_name}")
-    filename = f"/home/burpcat/Documents/assignments/ir/hw1-burpcat/outputs/{model_name}_output.txt"
+    filename = f"{PATH}/{model_name}_output.txt"
     with open(filename, 'w') as file:
         for ele in query_ids:
             print(model_name,ele)
@@ -90,6 +89,35 @@ def filewriter(model_name,query_ids,query_scores):
                 rank+=1
                 # <query-number> Q0 <docno> <rank> <score> Exp
                 file.write(f"{ele} Q0 {doc_id} {rank} {score} Exp\n")
+
+
+def prf_driver(queries,query_ids,attributes_dict,query_scores,document_list,limit):
+    
+    prf_dict = {}
+
+    for query_id,doc_scores in query_scores['tfidf'].items():
+        first_five_docs = list(doc_scores.items())[:5]
+        prf_dict.update({query_id : first_five_docs})
+
+    for id in query_ids:
+        data_combined = []
+        for ele in prf_dict[query_id]:
+            doc_id = ele[0]
+            response = relevant_terms_fetch(INDEX_NAME,doc_id=doc_id)
+            data_combined.append(response)
+
+        extra_terms = prf_highterm_fetcher(data_combined)
+
+        # addding the psuedo relevance terms to the existing queries
+        for query in queries:
+            if query[0] == id:  # Check if the current query's ID matches the extra_terms_id
+                query[1].extend(extra_terms)
+
+        # same code from queryprocessor to process the queries on the extended terms
+        query_scores = score_generator(queries,document_list,query_ids,attributes_dict,limit)
+
+        for model in models:
+            filewriter(PRF_OUT_PATH,model,query_ids,query_scores)
 
 
 def query_driver(QUERY_PATH,limit):
@@ -107,5 +135,8 @@ def query_driver(QUERY_PATH,limit):
     query_scores = score_generator(queries,document_list,query_ids,attributes_dict,limit)
 
     for model in models:
-        filewriter(model,query_ids,query_scores)
+        filewriter(DEF_OUT_PATH,model,query_ids,query_scores)
+
+    # psuedo relevance feedback driver
+    prf_driver(queries,query_ids,attributes_dict,query_scores,document_list,limit)
 

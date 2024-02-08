@@ -10,4 +10,4 @@ if(decisionbox=="1"):
     start_elastic_service(index_name=INDEX_NAME,corpus=corpus,configurations=configurationsv2)
 elif(decisionbox=="2"):
     print("Query execution and scoring started")
-    query_driver(QUERY_PATH=QUERY_PATH)
+    query_driver(QUERY_PATH=QUERY_PATH,limit=1000)

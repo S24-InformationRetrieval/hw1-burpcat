@@ -49,7 +49,7 @@ configurationsv2 = {
     },
     "mappings": {
         "properties": {
-            "content": {
+            "_content": {
                 "type": "text",
                 "fielddata": True,
                 "index_options": "positions"

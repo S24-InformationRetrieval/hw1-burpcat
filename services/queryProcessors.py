@@ -17,10 +17,10 @@ def load_queries(QUERY_PATH):
                 queries.append((id, porter_processing(content,"test").split()[2:]))
     return queries
 
-def score_generator(queries,document_list,query_ids,attributes_dict):
+def score_generator(queries,document_list,query_ids,attributes_dict,limit):
 
     # generating a dictionary to store the scores for each query on document for every model
-    query_scores = { m : {q : { d : "" for d in document_list} for q in query_ids} for m in models}
+    query_scores = { m : {q : {} for q in query_ids} for m in models}
 
     cool_list = []
     skank_list = []
@@ -62,16 +62,15 @@ def score_generator(queries,document_list,query_ids,attributes_dict):
 
                     if not documents_and_documentlength[doc_id] > 0:
                         skank_list.append([query,doc_id])
-                        query_scores[model][query_id][doc_id] = "0"
                     else:
                         cool_list.append([query,doc_id])
                         scores = retrievalmodel_handler(model,doc_id,query_tokens,attributes_dict)
-                        query_scores[model][query_id][doc_id] = str(scores)
+                        query_scores[model][query_id].update({doc_id : scores})
             
         for query_id, docs_scores in query_scores[model].items():
             print(docs_scores)
             # Convert the dictionary to a list of tuples [(doc_id, score), ...] and sort it
-            sorted_scores = sorted(docs_scores.items(), key=lambda x: float(x[1]), reverse=True)[:1000]
+            sorted_scores = sorted(docs_scores.items(), key=lambda x: float(x[1]), reverse=True)[:limit]
 
             # Re-construct the dictionary for this query_id with sorted and trimmed scores
             query_scores[model][query_id] = {doc_id: score for doc_id, score in sorted_scores}
@@ -93,7 +92,7 @@ def filewriter(model_name,query_ids,query_scores):
                 file.write(f"{ele} Q0 {doc_id} {rank} {score} Exp\n")
 
 
-def query_driver(QUERY_PATH):
+def query_driver(QUERY_PATH,limit):
 
     # get the list of queries which are stored as as a set of tuples(query_id,query as tokens which are word by word)
     queries = load_queries(QUERY_PATH)
@@ -105,7 +104,7 @@ def query_driver(QUERY_PATH):
     # Start termvector driver to fetch termvectors and start attributes filling
     attributes_dict = termvector_driver(INDEX_NAME,document_list)
 
-    query_scores = score_generator(queries,document_list,query_ids,attributes_dict)
+    query_scores = score_generator(queries,document_list,query_ids,attributes_dict,limit)
 
     for model in models:
         filewriter(model,query_ids,query_scores)

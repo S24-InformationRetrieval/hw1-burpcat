@@ -15,7 +15,8 @@ def load_queries(QUERY_PATH):
             if (query):
                 id = int(query.split('.')[0])
                 content = query.split('.')[1].strip()
-                queries.append((id, porter_processing(content,"test").split()[2:]))
+                # queries.append((id, porter_processing(content,"test").split()[2:]))
+                queries.append((id, porter_processing(content,"test").split()))
     return queries
 
 def score_generator(queries,document_list,query_ids,attributes_dict,limit):
@@ -116,8 +117,8 @@ def prf_driver(queries,query_ids,attributes_dict,query_scores,document_list,limi
         # same code from queryprocessor to process the queries on the extended terms
         query_scores = score_generator(queries,document_list,query_ids,attributes_dict,limit)
 
-        for model in models:
-            filewriter(PRF_OUT_PATH,model,query_ids,query_scores)
+    for model in models:
+        filewriter(PRF_OUT_PATH,model,query_ids,query_scores)
 
 
 def query_driver(QUERY_PATH,limit):

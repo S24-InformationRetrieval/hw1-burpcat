@@ -46,6 +46,27 @@ def tagMatcherv2(text_block):
             # Concatenate all TEXT contents and update the index_dict
             index_dict[docno] = porter_processing(' '.join(text_contents),docno)
             # index_dict.update({docno:text_contents})
+
+def tagMatcherv3(text_block):
+    docno = None
+    collecting_text = False
+    text_lines = []
+
+    for line in text_block:
+        if '<DOCNO>' in line:
+            docno = re.search('<DOCNO>(.*?)</DOCNO>', line).group(1).strip()
+        elif '<TEXT>' in line:
+            collecting_text = True
+        elif '</TEXT>' in line:
+            collecting_text = False
+            # Process and return the text collected so far
+            processed_text = porter_processing(' '.join(text_lines))
+            index_dict[docno] = processed_text
+            # yield docno, processed_text
+            text_lines = []  # Reset for next TEXT segment
+        elif collecting_text:
+            text_lines.append(line.strip())
+    
     
 
     
